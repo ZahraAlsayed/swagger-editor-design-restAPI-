@@ -7,6 +7,62 @@ servers:
   - url: http://localhost:3001
     description: Localhost server
 
+components:
+  schemas:
+    Product:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        title:
+          type: string
+        price:
+          type: number
+        category:
+          type: string
+        image:
+          type: string
+        rating:
+          type: number
+
+    User:
+      type: object
+      properties:
+        first_name:
+          type: string
+        last_name:
+          type: string
+        id:
+          type: integer
+        email:
+          type: string
+        password:
+          type: string
+
+    Category:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+
+    Order:
+      type: object
+      properties:
+        id:
+          type: integer
+        customer_name:
+          type: string
+        customer_id:
+          type: integer
+        product_id:
+          type: integer
+        purchasedAt:
+          type: string  
+
 paths:
   /products:
     get:
@@ -332,58 +388,3 @@ paths:
         '404':
           description: Order not found
 
-components:
-  schemas:
-    Product:
-      type: object
-      properties:
-        id:
-          type: integer
-        name:
-          type: string
-        title:
-          type: string
-        price:
-          type: number
-        category:
-          type: string
-        image:
-          type: string
-        rating:
-          type: number
-
-    User:
-      type: object
-      properties:
-        first_name:
-          type: string
-        last_name:
-          type: string
-        id:
-          type: integer
-        email:
-          type: string
-        password:
-          type: string
-
-    Category:
-      type: object
-      properties:
-        id:
-          type: integer
-        name:
-          type: string
-
-    Order:
-      type: object
-      properties:
-        id:
-          type: integer
-        customer_name:
-          type: string
-        customer_id:
-          type: integer
-        product_id:
-          type: integer
-        purchasedAt:
-          type: string 
