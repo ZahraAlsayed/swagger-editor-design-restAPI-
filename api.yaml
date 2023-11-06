@@ -20,12 +20,18 @@ components:
           type: string
         price:
           type: number
-        category:
-          type: string
+        categoryId:
+          type: integer
         image:
           type: string
         rating:
-          type: number
+          type: object
+          properties:
+            rate:
+              type: number
+            count:
+              type: number
+              
 
     User:
       type: object
@@ -40,6 +46,25 @@ components:
           type: string
         password:
           type: string
+    UserRegistration:
+      type: object
+      properties:
+        first_name:
+          type: string
+        last_name:
+          type: string
+        email:
+          type: string
+        password:
+          type: string
+
+    UserLogin:
+      type: object
+      properties:
+        email:
+          type: string
+        password:
+          type: string      
 
     Category:
       type: object
@@ -245,6 +270,42 @@ paths:
           description: No content
         '404':
           description: User not found
+  /auth/register:
+    post:
+      summary: Register a new user
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserRegistration'
+      responses:
+        '201':
+          description: User registered successfully
+
+  /auth/login:
+    post:
+      summary: User login
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserLogin'
+      responses:
+        '200':
+          description: Login successful
+        '401':
+          description: Unauthorized
+
+  /auth/logout:
+    post:
+      summary: User logout
+      responses:
+        '200':
+          description: Logout successful
+        '401':
+          description: Unauthorized
 
   /categories:
     get:
