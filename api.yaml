@@ -67,6 +67,27 @@ paths:
   /products:
     get:
       summary: Get all products
+      parameters:
+        - name: search
+          in: query
+          description: Search products by name
+          schema:
+            type: string
+        - name: page
+          in: query
+          description: Page number for pagination
+          schema:
+            type: integer
+        - name: limit
+          in: query
+          description: Number of items per page
+          schema:
+            type: integer
+        - name: sort
+          in: query
+          description: Sort products by a field (e.g., price)
+          schema:
+            type: string
       responses:
         '200':
           description: Success
@@ -118,7 +139,7 @@ paths:
           schema:
             type: integer
           description: ID of the product to update
-        requestBody:
+      requestBody:
           required: true
           content:
             application/json:
@@ -144,7 +165,6 @@ paths:
           description: No content
         '404':
           description: Product not found
-
   /users:
     get:
       summary: Get all users
@@ -199,7 +219,7 @@ paths:
           schema:
             type: integer
           description: ID of the user to update
-        requestBody:
+      requestBody:
           required: true
           content:
             application/json:
@@ -280,7 +300,7 @@ paths:
           schema:
             type: integer
           description: ID of the category to update
-        requestBody:
+      requestBody:
           required: true
           content:
             application/json:
@@ -361,7 +381,7 @@ paths:
           schema:
             type: integer
           description: ID of the order to update
-        requestBody:
+      requestBody:
           required: true
           content:
             application/json:
