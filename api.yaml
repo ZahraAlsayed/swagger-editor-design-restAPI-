@@ -73,7 +73,6 @@ components:
           type: integer
         name:
           type: string
-
     Order:
       type: object
       properties:
@@ -83,10 +82,12 @@ components:
           type: string
         customer_id:
           type: integer
-        product_id:
-          type: integer
+        products:
+          type: array
+          items:
+            $ref: '#/components/schemas/Product'  # Array of products in the order
         purchasedAt:
-          type: string  
+          type: string
 
 paths:
   /products:
